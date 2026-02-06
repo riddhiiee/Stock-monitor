@@ -61,7 +61,7 @@ StockScope focuses on **investment learning, not financial advice**. It helps be
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/riddhiiee/stock-monitor.git
+git clone https://github.com/riddhiiee/Stock-monitor.git
 cd stock-monitor
 ```
 
