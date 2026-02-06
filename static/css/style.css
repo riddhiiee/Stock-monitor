@@ -1,0 +1,548 @@
+/* Global Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* Ticker List */
+.ticker-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.ticker-item {
+    padding: 8px 12px;
+    margin: 4px 0;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticker-item:hover {
+    background-color: #e7f3ff;
+    border-color: #0d6efd;
+    transform: translateX(3px);
+}
+
+.ticker-symbol {
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+.company-name {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+/* Watchlist */
+.watchlist-container {
+    min-height: 100px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.watchlist-item {
+    padding: 10px 12px;
+    margin: 6px 0;
+    background-color: #fff;
+    border: 1px solid #198754;
+    border-left: 4px solid #198754;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.watchlist-item:hover {
+    background-color: #d1e7dd;
+    transform: translateX(3px);
+}
+
+.watchlist-ticker {
+    font-weight: bold;
+    color: #198754;
+    font-size: 1.1rem;
+}
+
+.remove-btn {
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.remove-btn:hover {
+    opacity: 1;
+}
+
+/* Search Results */
+.search-result-item {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.search-result-item:hover {
+    background-color: #e7f3ff;
+    border-color: #0d6efd;
+}
+
+/* Metrics Table */
+#metricsTable {
+    font-size: 0.9rem;
+}
+
+#metricsTable th {
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.positive-value {
+    color: #198754;
+    font-weight: bold;
+}
+
+.negative-value {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.hover-info {
+    cursor: help;
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+/* Stock Insights */
+.stock-insight-card {
+    padding: 12px;
+    margin: 8px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 8px;
+    border-left: 4px solid #ffd700;
+}
+
+.insight-ticker {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.insight-text {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.95;
+}
+
+/* Charts */
+.plotly-chart {
+    width: 100%;
+    height: 400px;
+}
+
+/* Tooltips */
+.tooltip-inner {
+    max-width: 300px;
+    text-align: left;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+}
+
+/* Loading States */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Scrollbar Styling */
+.ticker-list::-webkit-scrollbar,
+.watchlist-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ticker-list::-webkit-scrollbar-track,
+.watchlist-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.ticker-list::-webkit-scrollbar-thumb,
+.watchlist-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.ticker-list::-webkit-scrollbar-thumb:hover,
+.watchlist-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .col-md-3, .col-md-9 {
+        padding: 0 8px;
+    }
+    
+    #metricsTable {
+        font-size: 0.75rem;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Alert Styles */
+.alert-info {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+}
+
+.alert-info h5 {
+    color: white;
+}
+
+/* Badge */
+.badge {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+/* Risk Indicators */
+.risk-low {
+    color: #198754;
+    font-weight: bold;
+}
+
+.risk-medium {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.risk-high {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Chat Float Button */
+.chat-float-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: all 0.3s;
+}
+
+.chat-float-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+/* Chat Window */
+.chat-window {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 380px;
+    height: 500px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    background: #f8f9fa;
+}
+
+.chat-message {
+    margin-bottom: 15px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-content {
+    padding: 10px 15px;
+    border-radius: 12px;
+    max-width: 85%;
+    word-wrap: break-word;
+}
+
+.bot-message .message-content {
+    background: white;
+    border: 1px solid #dee2e6;
+    margin-right: auto;
+}
+
+.user-message {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-message .message-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin-left: auto;
+}
+
+.chat-input {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #dee2e6;
+    background: white;
+}
+
+.chat-input input {
+    flex: 1;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-right: 10px;
+}
+
+.chat-input button {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+}
+
+/* Stock Result Card in Chat */
+.stock-result-card {
+    background: white;
+    border: 2px solid #0d6efd;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+.stock-result-card .ticker {
+    font-weight: bold;
+    color: #0d6efd;
+    font-size: 1.1rem;
+}
+
+.stock-result-card .name {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.stock-result-card .sector-badge {
+    display: inline-block;
+    background: #e7f3ff;
+    color: #0d6efd;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    margin-top: 5px;
+}
+
+.add-stock-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: white;
+    border-radius: 12px;
+    width: fit-content;
+}
+
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    background: #667eea;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 2px;
+    animation: bounce 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Scrollbar for chat */
+.chat-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.chat-body::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.chat-body::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Mobile Responsive Chat */
+@media (max-width: 768px) {
+    .chat-window {
+        width: calc(100% - 40px);
+        right: 20px;
+        left: 20px;
+    }
+    
+    .chat-float-btn {
+        right: 20px;
+        bottom: 20px;
+    }
+}
+
+/* Tab Styling */
+.nav-tabs {
+    border-bottom: 2px solid #dee2e6;
+}
+
+.nav-tabs .nav-link {
+    color: #6c757d;
+    font-weight: 500;
+    border: none;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.nav-tabs .nav-link:hover {
+    color: #0d6efd;
+    border-bottom-color: #0d6efd;
+    background: transparent;
+}
+
+.nav-tabs .nav-link.active {
+    color: #0d6efd;
+    border-bottom-color: #0d6efd;
+    background: transparent;
+    font-weight: 600;
+}
+
+.tab-content {
+    padding-top: 20px;
+}
+
+.tab-pane {
+    animation: fadeIn 0.3s ease-in;
+}
+
+/* Loading state improvements */
+#loadingSpinner {
+    padding: 60px 0;
+}
+
+#loadingSpinner .spinner-border {
+    width: 4rem;
+    height: 4rem;
+}
+
+/* Better table styling */
+#metricsTable {
+    font-size: 0.95rem;
+}
+
+#metricsTable tbody tr:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
