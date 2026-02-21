@@ -5,12 +5,11 @@ from utils.data_fetcher import DataFetcher
 from utils.calculations import MetricsCalculator
 from utils.ai_helper import AIHelper
 import json
-from openai import OpenAI
 import os
 import pandas as pd
 import yfinance as yf
 from datetime import datetime
-
+from openai import OpenAI
 app = Flask(__name__)
 
 # Initialize utilities
