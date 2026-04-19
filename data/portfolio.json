@@ -1,0 +1,50 @@
+{
+  "id": "20260420011117",
+  "created_date": "2026-04-20",
+  "initial_cash": 10000,
+  "holdings": [
+    {
+      "ticker": "NVDA",
+      "shares": 8.4292,
+      "buy_price": 201.68,
+      "buy_date": "2026-04-20",
+      "amount_invested": 1700
+    },
+    {
+      "ticker": "JPM",
+      "shares": 4.8342,
+      "buy_price": 310.29,
+      "buy_date": "2026-04-20",
+      "amount_invested": 1500
+    },
+    {
+      "ticker": "DHR",
+      "shares": 3.0809,
+      "buy_price": 194.75,
+      "buy_date": "2026-04-20",
+      "amount_invested": 600
+    },
+    {
+      "ticker": "HON",
+      "shares": 10.4175,
+      "buy_price": 233.55,
+      "buy_date": "2026-04-20",
+      "amount_invested": 2433
+    },
+    {
+      "ticker": "DUK",
+      "shares": 7.8107,
+      "buy_price": 128.03,
+      "buy_date": "2026-04-20",
+      "amount_invested": 1000
+    },
+    {
+      "ticker": "WMT",
+      "shares": 21.702,
+      "buy_price": 127.5,
+      "buy_date": "2026-04-20",
+      "amount_invested": 2767
+    }
+  ],
+  "cash_remaining": 0
+}

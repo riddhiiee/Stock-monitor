@@ -2,6 +2,7 @@ import io
 from flask import Flask, render_template, request, jsonify, send_file
 import openai
 from utils.data_fetcher import DataFetcher
+from utils.portfolio_manager import PortfolioManager
 from utils.calculations import MetricsCalculator
 from utils.ai_helper import AIHelper
 import json
@@ -14,6 +15,7 @@ app = Flask(__name__)
 
 # Initialize utilities
 data_fetcher = DataFetcher()
+portfolio_manager = PortfolioManager()
 openai_client = OpenAI(api_key=os.getenv('OPENAI_API_KEY')) 
 ai_helper = AIHelper(data_fetcher)
  
@@ -69,6 +71,68 @@ def get_company_name(ticker):
     """Get company name for a ticker"""
     name = data_fetcher.get_company_name(ticker)
     return jsonify({'ticker': ticker, 'name': name})
+
+@app.route('/api/portfolio/create', methods=['POST'])
+def create_portfolio():
+    """Create a new portfolio"""
+    data = request.get_json()
+    
+    initial_cash = data.get('initial_cash', 10000)
+    allocations = data.get('allocations', [])
+    
+    if not allocations:
+        return jsonify({'error': 'No allocations provided'}), 400
+    
+    try:
+        portfolio = portfolio_manager.create_portfolio(initial_cash, allocations)
+        return jsonify({'portfolio': portfolio, 'message': 'Portfolio created successfully'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+@app.route('/api/portfolio', methods=['GET'])
+def get_portfolio():
+    """Get current portfolio"""
+    portfolio = portfolio_manager.get_portfolio()
+    
+    if not portfolio:
+        return jsonify({'portfolio': None})
+    
+    return jsonify({'portfolio': portfolio})
+
+@app.route('/api/portfolio/summary', methods=['GET'])
+def get_portfolio_summary():
+    """Get comprehensive portfolio summary"""
+    summary = portfolio_manager.get_portfolio_summary()
+    
+    if not summary:
+        return jsonify({'summary': None})
+    
+    return jsonify(summary)
+
+@app.route('/api/portfolio/update', methods=['POST'])
+def update_portfolio_snapshot():
+    """Update daily portfolio snapshot"""
+    try:
+        snapshot = portfolio_manager.update_daily_snapshot()
+        return jsonify({'snapshot': snapshot, 'message': 'Portfolio updated successfully'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+
+@app.route('/api/portfolio/history', methods=['GET'])
+def get_portfolio_history():
+    """Get portfolio performance history"""
+    history = portfolio_manager.get_performance_history()
+    return jsonify(history)
+
+@app.route('/api/portfolio/delete', methods=['DELETE'])
+def delete_portfolio():
+    """Delete current portfolio"""
+    try:
+        portfolio_manager.delete_portfolio()
+        return jsonify({'message': 'Portfolio deleted successfully'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/api/analyze', methods=['POST'])
 def analyze_watchlist():

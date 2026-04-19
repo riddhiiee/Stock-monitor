@@ -75,7 +75,16 @@
                         </button>
                     </div>
                 </div>
-
+                 <div class="card shadow-sm mt-3">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0"><i class="fas fa-wallet"></i> Portfolio</h5>
+                    </div>
+                    <div class="card-body">
+                        <button class="btn btn-success w-100" onclick="openPortfolioView()">
+                            <i class="fas fa-plus-circle"></i> My Portfolio
+                        </button>
+                    </div>
+                    </div>   
                 <!-- Time Period Selection -->
                 <div class="card shadow-sm mt-3">
                     <div class="card-header bg-light">
@@ -129,7 +138,154 @@
                         <p id="aiSummary" class="mb-0"></p>
                     </div>
                 </div>
+                <!-- PORTFOLIO PANEL - ADD THIS AFTER AI INSIGHTS PANEL -->
+                <div id="portfolioPanel" style="display: none;">
+                    <!-- Portfolio Tabs -->
+                    <ul class="nav nav-tabs mb-3" id="portfolioTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="portfolio-overview-tab" data-bs-toggle="tab" data-bs-target="#portfolio-overview" type="button" role="tab">
+                                <i class="fas fa-wallet"></i> Overview
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="portfolio-performance-tab" data-bs-toggle="tab" data-bs-target="#portfolio-performance" type="button" role="tab">
+                                <i class="fas fa-chart-line"></i> Performance
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="portfolio-holdings-tab" data-bs-toggle="tab" data-bs-target="#portfolio-holdings" type="button" role="tab">
+                                <i class="fas fa-list"></i> Holdings
+                            </button>
+                        </li>
+                    </ul>
 
+                    <div class="tab-content" id="portfolioTabContent">
+                        <!-- Overview Tab -->
+                        <div class="tab-pane fade show active" id="portfolio-overview" role="tabpanel">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="card bg-primary text-white mb-3">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Total Value</h6>
+                                            <h3 id="portfolio-total-value">$0.00</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-success text-white mb-3">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Total Gain/Loss</h6>
+                                            <h3 id="portfolio-total-gain">$0.00</h3>
+                                            <small id="portfolio-total-gain-pct">(0%)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-info text-white mb-3">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Days Tracked</h6>
+                                            <h3 id="portfolio-days">0</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-warning text-dark mb-3">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Cash Remaining</h6>
+                                            <h3 id="portfolio-cash">$0.00</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0">Quick Actions</h5>
+                                </div>
+                                <div class="card-body">
+                                    <button class="btn btn-primary me-2" id="updatePortfolioBtn">
+                                        <i class="fas fa-sync"></i> Update Today's Value
+                                    </button>
+                                    <button class="btn btn-danger" id="deletePortfolioBtn">
+                                        <i class="fas fa-trash"></i> Delete Portfolio
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Performance Tab -->
+                        <div class="tab-pane fade" id="portfolio-performance" role="tabpanel">
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0">Portfolio Performance Over Time</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div id="portfolioPerformanceChart"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Holdings Tab -->
+                        <div class="tab-pane fade" id="portfolio-holdings" role="tabpanel">
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0">Current Holdings</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover" id="holdingsTable">
+                                            <thead class="table-dark">
+                                                <tr>
+                                                    <th>Ticker</th>
+                                                    <th>Shares</th>
+                                                    <th>Buy Price</th>
+                                                    <th>Current Price</th>
+                                                    <th>Invested</th>
+                                                    <th>Current Value</th>
+                                                    <th>Gain/Loss</th>
+                                                    <th>Gain/Loss %</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="holdingsTableBody">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CREATE PORTFOLIO PANEL -->
+                <div id="createPortfolioPanel" style="display: none;">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="fas fa-plus-circle"></i> Create Your Portfolio</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-info">
+                                <strong>How it works:</strong> Create a virtual portfolio with fake money. Track its performance daily for a week!
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="initialCash" class="form-label">Starting Cash (Virtual Money)</label>
+                                <input type="number" class="form-control" id="initialCash" value="10000" min="1000" step="1000">
+                                <small class="text-muted">How much virtual money to start with (e.g., $10,000)</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Allocate Money to Stocks</label>
+                                <div id="allocationList">
+                                    <p class="text-muted">Add stocks from your watchlist above first!</p>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-success btn-lg w-100" id="createPortfolioBtn">
+                                <i class="fas fa-rocket"></i> Create Portfolio
+                            </button>
+                        </div>
+                    </div>
+                </div>    
                 <!-- Statistics Table -->
                 <div id="statisticsPanel" style="display: none;">
                     <div class="card shadow-sm mb-4">

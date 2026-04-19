@@ -1,0 +1,47 @@
+{
+  "snapshots": [
+    {
+      "date": "2026-04-20",
+      "total_value": 10000.03,
+      "cash": 0,
+      "holdings_value": {
+        "NVDA": {
+          "current_price": 201.68,
+          "value": 1700.0,
+          "gain_loss": 0.0,
+          "gain_loss_pct": 0.0
+        },
+        "JPM": {
+          "current_price": 310.29,
+          "value": 1500.0,
+          "gain_loss": 0.0,
+          "gain_loss_pct": 0.0
+        },
+        "DHR": {
+          "current_price": 194.75,
+          "value": 600.01,
+          "gain_loss": 0.01,
+          "gain_loss_pct": 0.0
+        },
+        "HON": {
+          "current_price": 233.55,
+          "value": 2433.01,
+          "gain_loss": 0.01,
+          "gain_loss_pct": 0.0
+        },
+        "DUK": {
+          "current_price": 128.03,
+          "value": 1000.0,
+          "gain_loss": 0.0,
+          "gain_loss_pct": 0.0
+        },
+        "WMT": {
+          "current_price": 127.5,
+          "value": 2767.01,
+          "gain_loss": 0.01,
+          "gain_loss_pct": 0.0
+        }
+      }
+    }
+  ]
+}
